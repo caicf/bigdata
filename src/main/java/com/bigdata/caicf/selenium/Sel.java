@@ -7,7 +7,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 /**
  * Created by caicf on 2016/6/14.
  */
@@ -41,36 +40,53 @@ public class Sel {
             }
         });
 
+        //面包屑导航    电影>韩国>欲望
         String breadcrumbXPath="/html/body/div[2]/div[1]/div[1]";
-
-        System.out.println("====="+ WebUtil.getWebElementText(By.xpath(breadcrumbXPath)));
-
-        WebElement breadcrumb = driver.findElement(By.xpath(breadcrumbXPath));
-        System.out.println(breadcrumb.getText());
-
+        //电影名
         String movieNameXPath="//*[@id=\"h1_title\"]";
+        //评论数量
+        String commentXPath="//*[@id=\"commentnum\"]";
+        //播放次数
+        String playtimesXPath="//*[@id=\"act_playnum\"]";
+
+
+        System.out.println(WebUtil.getWebElementText(By.xpath(breadcrumbXPath)));
+
+
         String movieName=driver.findElement(By.xpath(movieNameXPath)).getText();
 
         System.out.println(movieName);
 
-        String commentXPath="//*[@id=\"commentnum\"]";
+
         String comment=driver.findElement(By.xpath(commentXPath)).getText();
 
         System.out.println(comment);
 
-        String playtimesXPath="//*[@id=\"act_playnum\"]";
+
         String playtimes=driver.findElement(By.xpath(playtimesXPath)).getText();
         System.out.println(playtimes);
 
 
-//        //*[@id="mod_descContent"]/ul
-
-        WebElement infos=driver.findElement(By.xpath("//*[@id=\"mod_descContent\"]/ul"));
 
 
-        System.out.println(infos.getText());
+        //标签
+        String tags="//*[@id=\"mod_descContent\"]/ul/li[1]/div";
+        //导演
+        String director="//*[@id=\"mod_descContent\"]/ul/li[2]/div";
+        //主演
+        String starring="//*[@id=\"mod_descContent\"]/ul/li[3]/div";
+        //简介
+        WebElement info=driver.findElement(By.xpath("//*[@id=\"btn_desc_expand\"]/span"));
+        info.click();
+        String infofull="//*[@id=\"mod_desc\"]/p[2]";
 
+        System.out.println("============================================================");
+        System.out.println(WebUtil.getWebElementText(By.xpath(tags)));
+        System.out.println(WebUtil.getWebElementText(By.xpath(director)));
+        System.out.println(WebUtil.getWebElementText(By.xpath(starring)));
+        System.out.println(WebUtil.getWebElementText(By.xpath(infofull)));
 
         driver.quit();
     }
+
 }

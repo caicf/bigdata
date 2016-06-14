@@ -94,4 +94,12 @@ public class WebUtil {
             return false;
         }
     }
+
+    /**
+     * 关闭driver
+     */
+    public static void quitDriver() {
+        driver.quit();
+    }
+
 }
