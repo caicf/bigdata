@@ -33,13 +33,7 @@ public class Sel {
         String breadcrumbXPath="/html/body/div[2]/div[1]/div[1]";
 
         WebElement breadcrumb = driver.findElement(By.xpath(breadcrumbXPath));
-        WebElement subBreadcrumb1=breadcrumb.findElement(By.xpath(breadcrumbXPath+"/a[1]"));
-        WebElement subBreadcrumb2=breadcrumb.findElement(By.xpath(breadcrumbXPath+"/a[2]"));
-        WebElement subBreadcrumb3=breadcrumb.findElement(By.xpath(breadcrumbXPath+"/a[3]"));
-
-        String breadcrumbText=subBreadcrumb1.getText()+"/"+subBreadcrumb2.getText()+"/"+subBreadcrumb3.getText();
-
-        System.out.println(breadcrumbText);
+        System.out.println(breadcrumb.getText());
 
         String movieNameXPath="//*[@id=\"h1_title\"]";
         String movieName=driver.findElement(By.xpath(movieNameXPath)).getText();
@@ -56,8 +50,12 @@ public class Sel {
         System.out.println(playtimes);
 
 
+//        //*[@id="mod_descContent"]/ul
+
+        WebElement infos=driver.findElement(By.xpath("//*[@id=\"mod_descContent\"]/ul"));
 
 
+        System.out.println(infos.getText());
 
 
         driver.quit();
