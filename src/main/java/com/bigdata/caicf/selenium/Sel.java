@@ -1,9 +1,12 @@
 package com.bigdata.caicf.selenium;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * Created by caicf on 2016/6/14.
@@ -19,6 +22,13 @@ public class Sel {
        // String path = "http://v.qq.com/prev/f/fetiylrqxyebh7g.html";
         WebDriver driver = new ChromeDriver();
         driver.get(path);
+
+        WebDriverWait wait=new WebDriverWait(driver,60);
+        wait.until(new ExpectedCondition<Boolean>() {
+            public Boolean apply(WebDriver driver) {
+                return   ((JavascriptExecutor)driver).executeScript("return document.readyState").equals("complete");
+            }
+        });
 
         String breadcrumbXPath="/html/body/div[2]/div[1]/div[1]";
 
