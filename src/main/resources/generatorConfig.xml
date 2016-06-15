@@ -49,8 +49,8 @@
         </javaClientGenerator>
 
         <!--对应数据库表名 , 后面几个设置是关闭Example文件的生成-->
-        <table tableName="data" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
-        <table tableName="info" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+        <table tableName="page_data" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+        <table tableName="page_info" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
    
     </context>
 </generatorConfiguration>

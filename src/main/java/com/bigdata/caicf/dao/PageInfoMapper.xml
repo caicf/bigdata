@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bigdata.caicf.dao.PageInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.bigdata.caicf.model.PageInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="breadcrumbtext" property="breadcrumbtext" jdbcType="VARCHAR" />
+    <result column="moviename" property="moviename" jdbcType="VARCHAR" />
+    <result column="comments" property="comments" jdbcType="VARCHAR" />
+    <result column="playtimes" property="playtimes" jdbcType="VARCHAR" />
+    <result column="tags" property="tags" jdbcType="VARCHAR" />
+    <result column="director" property="director" jdbcType="VARCHAR" />
+    <result column="starring" property="starring" jdbcType="VARCHAR" />
+    <result column="summary" property="summary" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, breadcrumbtext, moviename, comments, playtimes, tags, director, starring, summary
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from page_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from page_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.bigdata.caicf.model.PageInfo" >
+    insert into page_info (id, breadcrumbtext, moviename, 
+      comments, playtimes, tags, 
+      director, starring, summary
+      )
+    values (#{id,jdbcType=INTEGER}, #{breadcrumbtext,jdbcType=VARCHAR}, #{moviename,jdbcType=VARCHAR}, 
+      #{comments,jdbcType=VARCHAR}, #{playtimes,jdbcType=VARCHAR}, #{tags,jdbcType=VARCHAR}, 
+      #{director,jdbcType=VARCHAR}, #{starring,jdbcType=VARCHAR}, #{summary,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.bigdata.caicf.model.PageInfo" >
+    insert into page_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="breadcrumbtext != null" >
+        breadcrumbtext,
+      </if>
+      <if test="moviename != null" >
+        moviename,
+      </if>
+      <if test="comments != null" >
+        comments,
+      </if>
+      <if test="playtimes != null" >
+        playtimes,
+      </if>
+      <if test="tags != null" >
+        tags,
+      </if>
+      <if test="director != null" >
+        director,
+      </if>
+      <if test="starring != null" >
+        starring,
+      </if>
+      <if test="summary != null" >
+        summary,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="breadcrumbtext != null" >
+        #{breadcrumbtext,jdbcType=VARCHAR},
+      </if>
+      <if test="moviename != null" >
+        #{moviename,jdbcType=VARCHAR},
+      </if>
+      <if test="comments != null" >
+        #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="playtimes != null" >
+        #{playtimes,jdbcType=VARCHAR},
+      </if>
+      <if test="tags != null" >
+        #{tags,jdbcType=VARCHAR},
+      </if>
+      <if test="director != null" >
+        #{director,jdbcType=VARCHAR},
+      </if>
+      <if test="starring != null" >
+        #{starring,jdbcType=VARCHAR},
+      </if>
+      <if test="summary != null" >
+        #{summary,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bigdata.caicf.model.PageInfo" >
+    update page_info
+    <set >
+      <if test="breadcrumbtext != null" >
+        breadcrumbtext = #{breadcrumbtext,jdbcType=VARCHAR},
+      </if>
+      <if test="moviename != null" >
+        moviename = #{moviename,jdbcType=VARCHAR},
+      </if>
+      <if test="comments != null" >
+        comments = #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="playtimes != null" >
+        playtimes = #{playtimes,jdbcType=VARCHAR},
+      </if>
+      <if test="tags != null" >
+        tags = #{tags,jdbcType=VARCHAR},
+      </if>
+      <if test="director != null" >
+        director = #{director,jdbcType=VARCHAR},
+      </if>
+      <if test="starring != null" >
+        starring = #{starring,jdbcType=VARCHAR},
+      </if>
+      <if test="summary != null" >
+        summary = #{summary,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bigdata.caicf.model.PageInfo" >
+    update page_info
+    set breadcrumbtext = #{breadcrumbtext,jdbcType=VARCHAR},
+      moviename = #{moviename,jdbcType=VARCHAR},
+      comments = #{comments,jdbcType=VARCHAR},
+      playtimes = #{playtimes,jdbcType=VARCHAR},
+      tags = #{tags,jdbcType=VARCHAR},
+      director = #{director,jdbcType=VARCHAR},
+      starring = #{starring,jdbcType=VARCHAR},
+      summary = #{summary,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

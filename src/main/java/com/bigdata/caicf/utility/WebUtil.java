@@ -17,21 +17,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class WebUtil {
 
     private static WebDriver driver;
-    /**
-     * 获取WebDriver
-     * @param browser
-     * @return
-     */
-    public static WebDriver getWebDriver(String browser){
-        WebDriver driver=null;
-        if (browser=="chrome"){
-            driver=getChromeDriver();
-        }
-        if (browser=="id"){
-            driver=getIEDriver();
-        }
-        return driver;
-    }
 
     /**
      * 支持Chrome
