@@ -2,32 +2,31 @@ package com.bigdata.caicf.model;
 
 import java.util.Date;
 
-/**
- * Created by caicf on 2016/6/14.
- */
 public class Data {
-    private int id;
-    private String value;
+    private Integer id;
+
+    private String url;
+
     private Date date;
-    private int objId;
 
-    public Data() {
-    }
+    private Integer objId;
 
-    public int getId() {
+    private String value;
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getValue() {
-        return value;
+    public String getUrl() {
+        return url;
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public void setUrl(String url) {
+        this.url = url == null ? null : url.trim();
     }
 
     public Date getDate() {
@@ -38,11 +37,19 @@ public class Data {
         this.date = date;
     }
 
-    public int getObjId() {
+    public Integer getObjId() {
         return objId;
     }
 
-    public void setObjId(int objId) {
+    public void setObjId(Integer objId) {
         this.objId = objId;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value == null ? null : value.trim();
     }
 }

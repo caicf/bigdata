@@ -1,44 +1,46 @@
 package com.bigdata.caicf.model;
 
-/**
- * Created by caicf on 2016/6/14.
- */
 public class Info {
-    private int id;
-    private String breadcrumbText;
-    private String movieName;
+    private Integer id;
+
+    private String breadcrumbtext;
+
+    private String moviename;
+
     private String comments;
+
     private String playtimes;
+
     private String tags;
+
     private String director;
+
     private String starring;
+
     private String summary;
 
-    public Info() {
-    }
-
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getBreadcrumbText() {
-        return breadcrumbText;
+    public String getBreadcrumbtext() {
+        return breadcrumbtext;
     }
 
-    public void setBreadcrumbText(String breadcrumbText) {
-        this.breadcrumbText = breadcrumbText;
+    public void setBreadcrumbtext(String breadcrumbtext) {
+        this.breadcrumbtext = breadcrumbtext == null ? null : breadcrumbtext.trim();
     }
 
-    public String getMovieName() {
-        return movieName;
+    public String getMoviename() {
+        return moviename;
     }
 
-    public void setMovieName(String movieName) {
-        this.movieName = movieName;
+    public void setMoviename(String moviename) {
+        this.moviename = moviename == null ? null : moviename.trim();
     }
 
     public String getComments() {
@@ -46,7 +48,7 @@ public class Info {
     }
 
     public void setComments(String comments) {
-        this.comments = comments;
+        this.comments = comments == null ? null : comments.trim();
     }
 
     public String getPlaytimes() {
@@ -54,7 +56,7 @@ public class Info {
     }
 
     public void setPlaytimes(String playtimes) {
-        this.playtimes = playtimes;
+        this.playtimes = playtimes == null ? null : playtimes.trim();
     }
 
     public String getTags() {
@@ -62,7 +64,7 @@ public class Info {
     }
 
     public void setTags(String tags) {
-        this.tags = tags;
+        this.tags = tags == null ? null : tags.trim();
     }
 
     public String getDirector() {
@@ -70,7 +72,7 @@ public class Info {
     }
 
     public void setDirector(String director) {
-        this.director = director;
+        this.director = director == null ? null : director.trim();
     }
 
     public String getStarring() {
@@ -78,7 +80,7 @@ public class Info {
     }
 
     public void setStarring(String starring) {
-        this.starring = starring;
+        this.starring = starring == null ? null : starring.trim();
     }
 
     public String getSummary() {
@@ -86,6 +88,6 @@ public class Info {
     }
 
     public void setSummary(String summary) {
-        this.summary = summary;
+        this.summary = summary == null ? null : summary.trim();
     }
 }
