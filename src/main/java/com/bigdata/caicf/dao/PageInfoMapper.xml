@@ -25,14 +25,14 @@
     delete from page_info
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.bigdata.caicf.model.PageInfo" >
+  <insert id="insert" parameterType="com.bigdata.caicf.model.PageInfo" useGeneratedKeys="true" keyProperty="id" >
     insert into page_info (id, breadcrumbtext, moviename, 
       comments, playtimes, tags, 
       director, starring, summary
       )
     values (#{id,jdbcType=INTEGER}, #{breadcrumbtext,jdbcType=VARCHAR}, #{moviename,jdbcType=VARCHAR}, 
       #{comments,jdbcType=VARCHAR}, #{playtimes,jdbcType=VARCHAR}, #{tags,jdbcType=VARCHAR}, 
-      #{director,jdbcType=VARCHAR}, #{starring,jdbcType=VARCHAR}, #{summary,jdbcType=VARCHAR}
+      #{director,jdbcType=VARCHAR}, #{starring,jdbcType=VARCHAR}, #{summary,jdbcType=CLOB}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.bigdata.caicf.model.PageInfo" >

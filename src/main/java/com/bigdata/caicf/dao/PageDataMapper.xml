@@ -32,7 +32,7 @@
     insert into page_data (id, url, date, 
       obj_id, value)
     values (#{id,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR}, #{date,jdbcType=TIMESTAMP}, 
-      #{objId,jdbcType=INTEGER}, #{value,jdbcType=LONGVARCHAR})
+      #{objId,jdbcType=INTEGER}, #{value,jdbcType=CLOB})
   </insert>
   <insert id="insertSelective" parameterType="com.bigdata.caicf.model.PageData" >
     insert into page_data
