@@ -37,7 +37,7 @@ public class RunPulisherTwo {
         params.put("type",3);
         String message = parseMapToJSONStr(params);
         System.out.println("【X】 request params '"+message+"'");
-        channel.basicPublish("amqpExchange","test_queue_key_three", MessageProperties.PERSISTENT_TEXT_PLAIN,message.getBytes("utf-8"));
+        channel.basicPublish("amqpExchange","test_queue_key_one", MessageProperties.PERSISTENT_TEXT_PLAIN,message.getBytes("utf-8"));
         channel.close();
         connection.close();
     }
