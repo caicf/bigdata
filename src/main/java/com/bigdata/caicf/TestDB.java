@@ -5,6 +5,7 @@ import com.bigdata.caicf.dao.PageDataMapper;
 import com.bigdata.caicf.dao.PageInfoMapper;
 import com.bigdata.caicf.model.PageData;
 import com.bigdata.caicf.model.PageInfo;
+import com.bigdata.caicf.utility.TencentXPathUtil;
 import com.bigdata.caicf.utility.WebUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,6 +33,7 @@ public class TestDB {
     private PageInfoMapper pageInfoMapper;
 
     @Test
+//    @Transactional
     public void test2() {
         WebDriver driver= WebUtil.getIEDriver();
         String path="http://v.qq.com/cover/v/va107nb989aqmje.html?ptag=2345.movie";
@@ -58,7 +60,7 @@ public class TestDB {
         String infofull="//*[@id=\"mod_desc\"]/p[2]";
 
         PageInfo pageInfo=new PageInfo();
-        pageInfo.setBreadcrumbtext(WebUtil.getWebElementText(By.xpath(breadcrumbXPath)));
+        pageInfo.setBreadcrumbtext(WebUtil.getWebElementText(By.xpath(TencentXPathUtil.breadcrumbXPath)));
         pageInfo.setMoviename(WebUtil.getWebElementText(By.xpath(movieNameXPath)));
         pageInfo.setComments(WebUtil.getWebElementText(By.xpath(commentXPath)));
         pageInfo.setPlaytimes(WebUtil.getWebElementText(By.xpath(playtimesXPath)));

@@ -23,7 +23,7 @@ public class WebUtil {
      * @return
      */
     public static WebDriver getChromeDriver() {
-        System.setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src\\main\\resources\\selenium\\chromedriver.exe");
         driver=new ChromeDriver();
         return  driver;
     }
@@ -33,7 +33,7 @@ public class WebUtil {
      * @return
      */
     public static WebDriver getIEDriver() {
-        System.setProperty("webdriver.ie.driver","src\\main\\resources\\IEDriverServer.exe");
+        System.setProperty("webdriver.ie.driver","src\\main\\resources\\selenium\\IEDriverServer.exe");
         //解决IE启动报错问题
         DesiredCapabilities ieCapabilities = DesiredCapabilities.internetExplorer();
         ieCapabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
