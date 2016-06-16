@@ -16,7 +16,7 @@ import java.util.concurrent.TimeoutException;
  */
 public class RunPulisherTwo {
 
-    private static final String QUEUE_NAME = "test_queue_one";
+    private static final String QUEUE_NAME = "test_queue_caicf";
 
     public static void main(String[] args) throws IOException, TimeoutException {
         ConnectionFactory connectionFactory  = new ConnectionFactory();
@@ -34,10 +34,10 @@ public class RunPulisherTwo {
         channel.queueDeclare(QUEUE_NAME,true,false,false,null);
         Map<String,Object> params = new HashMap<String, Object>();
         params.put("deviceId","800000001");
-        params.put("type",3);
+        params.put("type",5);
         String message = parseMapToJSONStr(params);
         System.out.println("【X】 request params '"+message+"'");
-        channel.basicPublish("amqpExchange","test_queue_key_one", MessageProperties.PERSISTENT_TEXT_PLAIN,message.getBytes("utf-8"));
+        channel.basicPublish("amqpExchange","routing_key_caicf", MessageProperties.PERSISTENT_TEXT_PLAIN,message.getBytes("utf-8"));
         channel.close();
         connection.close();
     }
