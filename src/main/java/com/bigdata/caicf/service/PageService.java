@@ -1,16 +1,12 @@
 package com.bigdata.caicf.service;
 
 import com.alibaba.fastjson.JSON;
-import com.bigdata.caicf.dao.PageDataMapper;
-import com.bigdata.caicf.dao.PageInfoMapper;
 import com.bigdata.caicf.model.PageData;
 import com.bigdata.caicf.model.PageInfo;
 import com.bigdata.caicf.utils.TencentXPathUtil;
 import com.bigdata.caicf.utils.WebResolveUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
 import java.util.Date;
@@ -24,16 +20,12 @@ import java.util.Properties;
 public class PageService implements Runnable {
 
     private String url;
+    private DataDurableService dataDurableService;
 
-    public PageService(String url) {
+    public PageService(String url, DataDurableService dataDurableService) {
         this.url = url;
+        this.dataDurableService = dataDurableService;
     }
-
-    @Autowired
-    private PageDataMapper pageDataMapper;
-
-    @Autowired
-    private PageInfoMapper pageInfoMapper;
 
     private PageData pageData =new PageData();
     private PageInfo pageInfo =new PageInfo();
@@ -67,24 +59,28 @@ public class PageService implements Runnable {
         pageInfo.setStarring(WebResolveUtil.getWebElementText(By.xpath(TencentXPathUtil.starringXPath)));
         pageInfo.setSummary(WebResolveUtil.getWebElementText(By.xpath(TencentXPathUtil.summaryfullXPath)));
 
-        WebResolveUtil.quitDriver();
-    }
-
-    @Transactional
-    private void durableToDB(){
-        pageInfoMapper.insert(pageInfo);
-        System.out.println(JSON.toJSONString(pageInfo));
-
         pageData.setUrl(url);
         pageData.setValue(JSON.toJSONString(pageInfo));
         pageData.setDate(new Date());
-        pageData.setObjId(pageInfo.getId());
-        pageDataMapper.insert(pageData);
-        System.out.println(JSON.toJSONString(pageData));
+
+        WebResolveUtil.quitDriver();
     }
+
+////    @Transactional
+//    private void durableToDB(){
+//        System.out.println("---------->>>>>>>>>执行插入数据");
+//        pageInfoMapper.insert(pageInfo);
+//        System.out.println(JSON.toJSONString(pageInfo));
+//        pageData.setUrl(url);
+//        pageData.setValue(JSON.toJSONString(pageInfo));
+//        pageData.setDate(new Date());
+//        pageData.setObjId(pageInfo.getId());
+//        pageDataMapper.insert(pageData);
+//        System.out.println(JSON.toJSONString(pageData));
+//    }
 
     public void run() {
         getTextSetObject();
-        durableToDB();
+        dataDurableService.durableDate(pageInfo,pageData);
     }
 }

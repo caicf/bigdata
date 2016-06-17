@@ -9,7 +9,7 @@
   <url>http://maven.apache.org</url>
 
     <properties>
-        <spring.version>4.2.3.RELEASE</spring.version>
+        <spring.version>4.1.6.RELEASE</spring.version>
         <rabbitmq.version>3.6.0</rabbitmq.version>
         <mybatis.version>3.2.6</mybatis.version>
         <mysqlconnector.version>5.1.35</mysqlconnector.version>

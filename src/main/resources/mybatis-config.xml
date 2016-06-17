@@ -11,9 +11,6 @@
     <typeAliases>
         <package name="com.bigdata.caicf.model" />
     </typeAliases>
-    <!--<typeAliases>-->
-       <!--<package name="com.bigdata.caicf.model"/>-->
-    <!--</typeAliases>-->
 
     <!--<environments default="development">-->
         <!--<environment id="development">-->

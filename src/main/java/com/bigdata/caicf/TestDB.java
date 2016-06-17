@@ -16,8 +16,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.Properties;
 
 /**
  * Created by caicf on 2016/6/15.
@@ -35,6 +37,13 @@ public class TestDB {
     @Test
 //    @Transactional
     public void test2() {
+        Properties properties=new Properties();
+        try {
+            properties.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("globalconfig.properties"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.setProperty("webdriver.ie.driver",properties.getProperty("ie.driver"));
         WebDriver driver= WebResolveUtil.getIEDriver();
         String path="http://v.qq.com/cover/v/va107nb989aqmje.html?ptag=2345.movie";
         new WebResolveUtil().waitPageLoadComplete(driver);

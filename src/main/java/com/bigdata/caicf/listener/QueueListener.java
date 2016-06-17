@@ -1,9 +1,11 @@
 package com.bigdata.caicf.listener;
 
 import com.alibaba.fastjson.JSONObject;
+import com.bigdata.caicf.service.DataDurableService;
 import com.bigdata.caicf.service.PageService;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageListener;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.UnsupportedEncodingException;
 
@@ -13,6 +15,9 @@ import java.io.UnsupportedEncodingException;
 public class QueueListener implements MessageListener {
 
     private String url=null;
+
+    @Autowired
+    private DataDurableService dataDurableService;
 
     public void onMessage(Message message) {
         try {
@@ -30,7 +35,7 @@ public class QueueListener implements MessageListener {
             System.out.println("=========="+Thread.currentThread().getPriority());
 //            new Thread(new ResolvePageData(url)).start();
 //            new PageService(url).resolvePageText();
-            Thread thread=new Thread(new PageService(url));
+            Thread thread=new Thread(new PageService(url,dataDurableService));
             thread.start();
             thread.join();
 

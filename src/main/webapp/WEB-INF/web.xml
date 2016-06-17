@@ -2,16 +2,22 @@
  "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
-<web-app>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+          		http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+
   <display-name>Archetype Created Web Application</display-name>
+
   <!-- 加载Spring容器监听器 -->
   <context-param>
     <param-name>contextConfigLocation</param-name>
-    <param-value>classpath:applicationContext.xml</param-value>
+    <param-value>classpath*:applicationContext.xml,classpath*:mybatis-config.xml</param-value>
   </context-param>
 
   <!-- Spring容器监听器 -->
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
+
 </web-app>
