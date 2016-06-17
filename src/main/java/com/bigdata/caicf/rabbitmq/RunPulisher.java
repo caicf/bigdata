@@ -14,7 +14,7 @@ import java.util.concurrent.TimeoutException;
  * Created by hasee on 2016/5/14.
  *
  */
-public class RunPulisherTwo {
+public class RunPulisher {
 
     private static final String QUEUE_NAME = "test_queue_caicf";
 
@@ -33,8 +33,8 @@ public class RunPulisherTwo {
          */
         channel.queueDeclare(QUEUE_NAME,true,false,false,null);
         Map<String,Object> params = new HashMap<String, Object>();
-        params.put("deviceId","800000001");
-        params.put("type",5);
+        params.put("id",5);
+        params.put("url","http://v.qq.com/cover/v/va107nb989aqmje.html?ptag=2345.movie");
         String message = parseMapToJSONStr(params);
         System.out.println("【X】 request params '"+message+"'");
         channel.basicPublish("amqpExchange","routing_key_caicf", MessageProperties.PERSISTENT_TEXT_PLAIN,message.getBytes("utf-8"));

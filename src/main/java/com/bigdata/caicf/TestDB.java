@@ -5,8 +5,8 @@ import com.bigdata.caicf.dao.PageDataMapper;
 import com.bigdata.caicf.dao.PageInfoMapper;
 import com.bigdata.caicf.model.PageData;
 import com.bigdata.caicf.model.PageInfo;
-import com.bigdata.caicf.utility.TencentXPathUtil;
-import com.bigdata.caicf.utility.WebUtil;
+import com.bigdata.caicf.utils.TencentXPathUtil;
+import com.bigdata.caicf.utils.WebResolveUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
@@ -35,9 +35,9 @@ public class TestDB {
     @Test
 //    @Transactional
     public void test2() {
-        WebDriver driver= WebUtil.getIEDriver();
+        WebDriver driver= WebResolveUtil.getIEDriver();
         String path="http://v.qq.com/cover/v/va107nb989aqmje.html?ptag=2345.movie";
-        new WebUtil().waitPageLoadComplete(driver);
+        new WebResolveUtil().waitPageLoadComplete(driver);
         driver.get(path);
         //面包屑导航    电影>韩国>欲望
         String breadcrumbXPath="/html/body/div[2]/div[1]/div[1]";
@@ -60,14 +60,14 @@ public class TestDB {
         String infofull="//*[@id=\"mod_desc\"]/p[2]";
 
         PageInfo pageInfo=new PageInfo();
-        pageInfo.setBreadcrumbtext(WebUtil.getWebElementText(By.xpath(TencentXPathUtil.breadcrumbXPath)));
-        pageInfo.setMoviename(WebUtil.getWebElementText(By.xpath(movieNameXPath)));
-        pageInfo.setComments(WebUtil.getWebElementText(By.xpath(commentXPath)));
-        pageInfo.setPlaytimes(WebUtil.getWebElementText(By.xpath(playtimesXPath)));
-        pageInfo.setTags(WebUtil.getWebElementText(By.xpath(tags)));
-        pageInfo.setDirector(WebUtil.getWebElementText(By.xpath(director)));
-        pageInfo.setStarring(WebUtil.getWebElementText(By.xpath(starring)));
-        pageInfo.setSummary(WebUtil.getWebElementText(By.xpath(infofull)));
+        pageInfo.setBreadcrumbtext(WebResolveUtil.getWebElementText(By.xpath(TencentXPathUtil.breadcrumbXPath)));
+        pageInfo.setMoviename(WebResolveUtil.getWebElementText(By.xpath(movieNameXPath)));
+        pageInfo.setComments(WebResolveUtil.getWebElementText(By.xpath(commentXPath)));
+        pageInfo.setPlaytimes(WebResolveUtil.getWebElementText(By.xpath(playtimesXPath)));
+        pageInfo.setTags(WebResolveUtil.getWebElementText(By.xpath(tags)));
+        pageInfo.setDirector(WebResolveUtil.getWebElementText(By.xpath(director)));
+        pageInfo.setStarring(WebResolveUtil.getWebElementText(By.xpath(starring)));
+        pageInfo.setSummary(WebResolveUtil.getWebElementText(By.xpath(infofull)));
 
         pageInfoMapper.insert(pageInfo);
         System.out.println(pageInfo.getId());
@@ -78,7 +78,7 @@ public class TestDB {
         pageData.setObjId(pageInfo.getId());
         pageDataMapper.insert(pageData);
 
-        WebUtil.quitDriver();
+        WebResolveUtil.quitDriver();
     }
 
     @Test

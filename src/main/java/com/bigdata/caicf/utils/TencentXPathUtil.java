@@ -1,4 +1,4 @@
-package com.bigdata.caicf.utility;
+package com.bigdata.caicf.utils;
 
 /**
  * XPath路径包

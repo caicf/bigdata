@@ -9,6 +9,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class RunConsumer {
 
     public static void main(String[] args){
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("rabbitmq\\spring-rabbitmq-consumer.xml");
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
     }
 }

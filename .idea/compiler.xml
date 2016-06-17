@@ -2,7 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <excludeFromCompile>
-      <file url="file://$PROJECT_DIR$/src/main/java/com/bigdata/caicf/utility/WebUtil.java" />
+      <file url="file://$PROJECT_DIR$/src/main/java/com/bigdata/caicf/utils/WebResolveUtil.java" />
       <file url="file://$PROJECT_DIR$/src/main/java/com/bigdata/caicf/selenium/Sel.java" />
     </excludeFromCompile>
     <resourceExtensions />

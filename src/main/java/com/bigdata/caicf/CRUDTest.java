@@ -1,6 +1,6 @@
 package com.bigdata.caicf;
 
-import com.bigdata.caicf.utility.WebUtil;
+import com.bigdata.caicf.utils.WebResolveUtil;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -12,9 +12,9 @@ import org.openqa.selenium.WebElement;
 public class CRUDTest {
     @Test
     public void testCreate(){
-        WebDriver driver= WebUtil.getIEDriver();
+        WebDriver driver= WebResolveUtil.getIEDriver();
         String path="http://v.qq.com/cover/v/va107nb989aqmje.html?ptag=2345.movie";
-        new WebUtil().waitPageLoadComplete(driver);
+        new WebResolveUtil().waitPageLoadComplete(driver);
         driver.get(path);
         //面包屑导航    电影>韩国>欲望
         String breadcrumbXPath="/html/body/div[2]/div[1]/div[1]";
@@ -37,18 +37,20 @@ public class CRUDTest {
         String infofull="//*[@id=\"mod_desc\"]/p[2]";
 
         System.out.println("============================================================");
+        System.out.println("---->>>>"+Thread.currentThread().getName());
+        System.out.println(WebResolveUtil.getWebElementText(By.xpath(breadcrumbXPath)));
+        System.out.println(WebResolveUtil.getWebElementText(By.xpath(movieNameXPath)));
+        System.out.println(WebResolveUtil.getWebElementText(By.xpath(commentXPath)));
+        System.out.println(WebResolveUtil.getWebElementText(By.xpath(playtimesXPath)));
+        System.out.println(WebResolveUtil.getWebElementText(By.xpath(tags)));
+        System.out.println("---->>>>"+Thread.currentThread().getName());
 
-        System.out.println(WebUtil.getWebElementText(By.xpath(breadcrumbXPath)));
-        System.out.println(WebUtil.getWebElementText(By.xpath(movieNameXPath)));
-        System.out.println(WebUtil.getWebElementText(By.xpath(commentXPath)));
-        System.out.println(WebUtil.getWebElementText(By.xpath(playtimesXPath)));
-        System.out.println(WebUtil.getWebElementText(By.xpath(tags)));
-        System.out.println(WebUtil.getWebElementText(By.xpath(director)));
-        System.out.println(WebUtil.getWebElementText(By.xpath(starring)));
-        System.out.println(WebUtil.getWebElementText(By.xpath(infofull)));
+        System.out.println(WebResolveUtil.getWebElementText(By.xpath(director)));
+        System.out.println(WebResolveUtil.getWebElementText(By.xpath(starring)));
+        System.out.println(WebResolveUtil.getWebElementText(By.xpath(infofull)));
 
 
-        WebUtil.quitDriver();
+        WebResolveUtil.quitDriver();
 
 
 

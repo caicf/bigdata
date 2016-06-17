@@ -1,4 +1,4 @@
-package com.bigdata.caicf.utility;
+package com.bigdata.caicf.utils;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -11,10 +11,9 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
- * 工具类
- * Created by caicf on 2016/6/14.
+ * Created by caicf on 2016/6/16.
  */
-public class WebUtil {
+public class WebResolveUtil {
 
     private static WebDriver driver;
 
@@ -23,7 +22,7 @@ public class WebUtil {
      * @return
      */
     public static WebDriver getChromeDriver() {
-        System.setProperty("webdriver.chrome.driver", "src\\main\\resources\\selenium\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "classpath:selenium/chromedriver.exe");
         driver=new ChromeDriver();
         return  driver;
     }
@@ -33,7 +32,7 @@ public class WebUtil {
      * @return
      */
     public static WebDriver getIEDriver() {
-        System.setProperty("webdriver.ie.driver","src\\main\\resources\\selenium\\IEDriverServer.exe");
+        System.setProperty("webdriver.ie.driver","C:\\Users\\caicf\\Desktop\\IEDriverServer.exe");
         //解决IE启动报错问题
         DesiredCapabilities ieCapabilities = DesiredCapabilities.internetExplorer();
         ieCapabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);

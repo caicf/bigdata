@@ -10,8 +10,10 @@
                 http://www.springframework.org/schema/tx
                 http://www.springframework.org/schema/tx/spring-tx.xsd">
 
+    <context:component-scan base-package="com.bigdata.caicf.service"/>
+
     <!-- 加载数据库配置文件 -->
-    <context:property-placeholder location="db.properties"/>
+    <context:property-placeholder location="classpath:globalconfig.properties"/>
 
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="${db.driver}" />
@@ -33,7 +35,7 @@
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
-        <property name="configLocation" value="mybatis-config.xml"/>
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
         <property name="mapperLocations" value="classpath*:com/bigdata/caicf/dao/*.xml"/>
     </bean>
 
@@ -49,6 +51,5 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
-    <import resource="spring-rabbitmq.xml"/>
-
+    <import resource="classpath:rabbitmq/spring-rabbitmq-consumer.xml"/>
 </beans>
