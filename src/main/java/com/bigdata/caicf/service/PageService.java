@@ -12,9 +12,11 @@ import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 
 /**
  * Created by caicf on 2016/6/16.
@@ -39,8 +41,14 @@ public class PageService implements Runnable {
     private Map<String,String> map=new HashMap<String, String>();
 
 
-
     private void getTextSetObject()  {
+        Properties properties=new Properties();
+        try {
+            properties.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("globalconfig.properties"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.setProperty("webdriver.ie.driver",properties.getProperty("ie.driver"));
         WebDriver driver= WebResolveUtil.getIEDriver();
         String path=url;
         new WebResolveUtil().waitPageLoadComplete(driver);

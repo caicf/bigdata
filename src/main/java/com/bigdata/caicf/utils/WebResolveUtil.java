@@ -32,7 +32,6 @@ public class WebResolveUtil {
      * @return
      */
     public static WebDriver getIEDriver() {
-        System.setProperty("webdriver.ie.driver","C:\\Users\\caicf\\Desktop\\IEDriverServer.exe");
         //解决IE启动报错问题
         DesiredCapabilities ieCapabilities = DesiredCapabilities.internetExplorer();
         ieCapabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
